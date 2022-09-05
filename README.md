@@ -20,7 +20,7 @@ Log system follows **singleton** pattern, once you made GameObject following abo
 ![image](https://user-images.githubusercontent.com/21963949/188426398-4f990c4f-1981-437f-a13c-cbba719396a5.png)<br>
 There is example scene and script part in the package, you can start or stop record by pressing left **plant** button and save it to file by pressing right **plant** button at htc vive controller. **plant** button is custom button created by following [this tutorial](https://valvesoftware.github.io/steamvr_unity_plugin/tutorials/SteamVR-Input.html), to create new input button from HTC Vive controller check this article and tweak LogSystem's update method.
 ```
-if(RecordStore.Count>0) {
+if(LogSystem.instance.RecordStore.Count>0) {
     File.WriteAllText("./out.json",JsonConvert.SerializeObject(LogSystem.instance.RecordStore[0].ToDict()));
 }
 ```
