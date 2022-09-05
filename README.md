@@ -1,5 +1,5 @@
 # Unity-Looxidlink-SRanipal-Recorder
-It is tool for 
+It is tool for recording Eye Tracking data from HTC vive, Raw EEG data from [LooxidLink](https://looxidlink.looxidlabs.com/) and converting stored data into Dictionary to be able to pass data to python into Json type.
 
 # Dependencies
 [Follow this instruction](https://looxidlabs.github.io/link-sdk/#/getting-started) to install SteamVR and LooxidLink SDK and [Follow this instruction](https://forum.htc.com/topic/5642-sranipal-getting-started-steps/) for install SRanipal Setup. (HTC Vive Eye tracker).<br>
@@ -19,6 +19,11 @@ To create log system to record eye tracking data and eeg signal, create empty Ga
 Log system follows **singleton** pattern, once you made GameObject following above instruction, you can access logsystem and call **RecordStart()** method and **RecordStop()** method by accessing static variable **instance** of **LogSystem** class.<br><br>you can record multiple times by calling recordstart many times, the result will be stored at **RecordStore** list as type of **DfRaw**. <br><br>DfRaw have **ToDict()** methods, which converts all stored data into dictionary which consisted compatible data type to python and javascript and so on.<br><br>
 ![image](https://user-images.githubusercontent.com/21963949/188426398-4f990c4f-1981-437f-a13c-cbba719396a5.png)<br>
 There is example scene and script part in the package, you can start or stop record by pressing left **plant** button and save it to file by pressing right **plant** button at htc vive controller. **plant** button is custom button created by following [this tutorial](https://valvesoftware.github.io/steamvr_unity_plugin/tutorials/SteamVR-Input.html), to create new input button from HTC Vive controller check this article and tweak LogSystem's update method.
+```
+if(RecordStore.Count>0) {
+    File.WriteAllText("./out.json",JsonConvert.SerializeObject(LogSystem.instance.RecordStore[0].ToDict()));
+}
+```
 ## Data Structure
 Data structure detailed in **translator.ipynb**(Korean)
 ## Python Integration
