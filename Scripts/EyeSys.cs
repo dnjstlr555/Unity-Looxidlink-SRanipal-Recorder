@@ -17,6 +17,7 @@ public class EyeSys : MonoBehaviour
     private LogSystem logsys;
     private static EyeData_v2 lastEyeData=new EyeData_v2();
     private static ExtendedEyeInfo lastExtendedEyeInfo = new ExtendedEyeInfo();
+    private int LastRecievedActionData=0;
     public List<DfSeqFrame<ExtendedEyeData_v2>> GetSig() {
         return rec.ConvertAll(d=>(DfSeqFrame<ExtendedEyeData_v2>)d.Clone());
     }
@@ -81,7 +82,7 @@ public class EyeSys : MonoBehaviour
             freq.Clear();
         }
     }
-    private static ExtendedEyeInfo getExtendedEyeData(ref EyeData_v2 eye_data) {
+    private static ExtendedEyeInfo getExtendedEyeData(ref EyeData_v2 eye_data) { //눈으로 쳐다보는 물체가 어떤건지 따로 수집하는 부분
         var temp=false;
         List<ColidedGameobjectInfo> focusRayInfo=new List<ColidedGameobjectInfo>();
         List<bool> validFocus=new List<bool>();
@@ -102,12 +103,12 @@ public class EyeSys : MonoBehaviour
         addition.validFocus=validFocus;
         return addition;
     }
-    private static void EyeCallback(ref EyeData_v2 eye_data)
+    private static void EyeCallback(ref EyeData_v2 eye_data) //눈 raw 데이터가 들어올때 처리하는 부분
     {
         lastEyeData=eye_data;
         if(RecordFlag) {
             freq.Add(eye_data.timestamp);
-            rec.Add(new DfSeqFrame<ExtendedEyeData_v2>(lastGameTime,DataAvailable,new ExtendedEyeData_v2(eye_data, lastExtendedEyeInfo)));
+            rec.Add(new DfSeqFrame<ExtendedEyeData_v2>(lastGameTime,DataAvailable,new ExtendedEyeData_v2(eye_data, lastExtendedEyeInfo))); //눈 데이터 수집하는 부분
             CalculateFreq();
         }
     }

@@ -377,11 +377,18 @@ public class LogSystem : MonoBehaviour
         bsys.RecordStop();
         esys.RecordStop();
         Debug.Log("Record Stopped");
-        StartCoroutine("test");
+    }
+    public void RecordSave() {
+        Debug.Log(RecordStore[RecordStore.Count-1]);
+        Debug.Log("Record Saving...");
+        foreach(var r in RecordStore) {
+            File.WriteAllText($"./{r.timestamp}.json",JsonConvert.SerializeObject(r.ToDict()));
+        }
     }
     void Update() {
-        bool plant=SteamVR_Input.GetStateDown("plant",SteamVR_Input_Sources.LeftHand);
-        bool seed=SteamVR_Input.GetStateDown("plant",SteamVR_Input_Sources.RightHand);
+        
+        bool plant=SteamVR_Input.GetStateDown("plant",SteamVR_Input_Sources.LeftHand) || Input.GetKeyDown(KeyCode.Home); //homekey 여부
+        bool seed=SteamVR_Input.GetStateDown("plant",SteamVR_Input_Sources.RightHand) || Input.GetKeyDown(KeyCode.End); //end키 여부
         if(plant) {
             if(isRecording) {
                 RecordStop();
@@ -390,17 +397,16 @@ public class LogSystem : MonoBehaviour
             }
         }
         if (seed) {
-            if(RecordStore.Count>0) {
+            if(RecordStore.Count>0) { //Record를 반복해서 껏다켰다 껏다켰다 하면 RecordStore에 여러개의 Record 집합체들이 저장됨
                 Debug.Log(RecordStore[RecordStore.Count-1]);
-                File.WriteAllText("./out.json",JsonConvert.SerializeObject(RecordStore[0].ToDict()));
+                Debug.Log(Directory.GetCurrentDirectory()+"\\out.json");
+                File.WriteAllText("./out.json",JsonConvert.SerializeObject(RecordStore[0].ToDict())); //그중에 맨 첫번째꺼를 파일화 시키는 소스
+                //파일화는 RecordStore에 있는 element중 파일화하고싶은 애를 ToDict()를 통해 dictionary 화 시켜서 이를 JSOn이나 여러 형식으로 저장시키면 파이썬에서 불러 올 수 있음.
             }
         }
+        
         if(isAssignedLogPanel) {
             log.text=$"isRecording:{isRecording}\nLastSensorStatus:{JsonConvert.SerializeObject(bsys.GetLastSensorDataForDebug(), Formatting.Indented)}\nLastEEGData:{JsonConvert.SerializeObject(bsys.GetLastEEGDataForDebug(), Formatting.Indented)}";
         }
-    }
-    IEnumerator test() {
-        yield return new WaitForSeconds(2f);
-        
     }
 }

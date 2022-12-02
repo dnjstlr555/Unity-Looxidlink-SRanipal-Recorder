@@ -94,7 +94,7 @@ public class Brain : MonoBehaviour
         int c=rawSignalData.rawSignal.Count;
         if(c>0 && logsys.RecordStatus()) {
             freq.Add(((long)Tools.GetNowTimeInMsUTC(),c));
-            rec.Add(new DfSeqFrame<ExtendedEEGRawSignal>(lastGameTime, DataAvailable, new ExtendedEEGRawSignal(rawSignalData,LastSensorStatus)));
+            rec.Add(new DfSeqFrame<ExtendedEEGRawSignal>(lastGameTime, DataAvailable, new ExtendedEEGRawSignal(rawSignalData,LastSensorStatus))); //뇌파 신호 수집되는 부분
             CalculateFreq();
         }
     }
