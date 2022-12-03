@@ -10,6 +10,7 @@ This asset requires these assets and execute files.<br>
 |LooxidLink Unity SDK|At unity project|[Download at here](https://github.com/LooxidLabs/link-sdk/releases/)|
 |LooxidLink Core|At computer|[Download at here](https://looxidlink.looxidlabs.com/product/looxid-link-core/)|
 |SRanipal SDK|At unity project|[Download at here](https://developer.vive.com/resources/vive-sense/eye-and-facial-tracking-sdk/download/latest/)|
+|SRanipal Runtime|At computer|[Download at here](https://developer.vive.com/kr/support/sdk/category_howto/how-to-update-vive-eye-tracking-runtime.html)
 # Install
 To install log system, you need to import package from [From release page of this repository](https://github.com/dnjstlr555/Unity-Looxidlink-SRanipal-Recorder/releases) . after import, you can import SteamVR, LooxidLink, SRanipal SDK to work with this system.<br><br>
 ![image](https://user-images.githubusercontent.com/21963949/188419872-bb180f7a-6bcc-4986-84cc-d82773011113.png)<br>
