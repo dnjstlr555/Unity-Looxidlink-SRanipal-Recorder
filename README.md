@@ -2,15 +2,16 @@
 It is tool for recording Eye Tracking data from HTC vive, Raw EEG data from [LooxidLink](https://looxidlink.looxidlabs.com/) and converting stored data into Dictionary to be able to pass data to python into Json type.
 
 # Dependencies
-[Follow this instruction](https://looxidlabs.github.io/link-sdk/#/getting-started) to install SteamVR and LooxidLink SDK and [Follow this instruction](https://forum.htc.com/topic/5642-sranipal-getting-started-steps/) for install SRanipal Setup. (HTC Vive Eye tracker).<br>
+[Follow this instruction](https://looxidlabs.github.io/link-sdk/#/getting-started) to install SteamVR and LooxidLink SDK and [Follow this instruction](https://forum.htc.com/topic/5642-sranipal-getting-started-steps/) for install SRanipal Setup. (HTC Vive Eye tracker).<br>**For SRaniapl(Eye tracking), If sdk's version does not match with SRanipal Runtime version project will be crashed.**<br>
+**The version of SRanipal used in this project is 1.3.5.5.** It is latest version from 2022/12/04.<br>
 This asset requires these assets and execute files.<br>
-|Name|Location|URL|
-|---|---|---|
-|SteamVR Asset|At unity project|[Download at here](https://assetstore.unity.com/packages/tools/integration/steamvr-plugin-32647)|
-|LooxidLink Unity SDK|At unity project|[Download at here](https://github.com/LooxidLabs/link-sdk/releases/)|
-|LooxidLink Core|At computer|[Download at here](https://looxidlink.looxidlabs.com/product/looxid-link-core/)|
-|SRanipal SDK|At unity project|[Download at here](https://developer.vive.com/resources/vive-sense/eye-and-facial-tracking-sdk/download/latest/)|
-|SRanipal Runtime|At computer|[Download at here](https://developer.vive.com/kr/support/sdk/category_howto/how-to-update-vive-eye-tracking-runtime.html)
+|Name|Location|Project Used Version|Latest URL|
+|---|---|---|---|
+|SteamVR Asset|At unity project|-|[Download at here](https://assetstore.unity.com/packages/tools/integration/steamvr-plugin-32647)|
+|LooxidLink Unity SDK|At unity project|[Download at here(LooxidLink_Unity_SDK_1.0.1.unitypackage)](https://github.com/dnjstlr555/Unity-Looxidlink-SRanipal-Recorder/releases/tag/v1.0.1)|[Download at here](https://github.com/LooxidLabs/link-sdk/releases/)|
+|LooxidLink Core|At computer|-|[Download at here](https://looxidlink.looxidlabs.com/product/looxid-link-core/)|
+|SRanipal SDK|At unity project|[Download at here(ViveSR.unitypackage)](https://github.com/dnjstlr555/Unity-Looxidlink-SRanipal-Recorder/releases/tag/v1.0.1)|[Download at here](https://developer.vive.com/resources/vive-sense/eye-and-facial-tracking-sdk/download/latest/)|
+|SRanipal Runtime|At computer|1.3.5.5|[Download at here](https://developer.vive.com/kr/support/sdk/category_howto/how-to-update-vive-eye-tracking-runtime.html)
 # Install
 To install log system, you need to import package from [From release page of this repository](https://github.com/dnjstlr555/Unity-Looxidlink-SRanipal-Recorder/releases) . after import, you can import SteamVR, LooxidLink, SRanipal SDK to work with this system.<br><br>
 ![image](https://user-images.githubusercontent.com/21963949/188419872-bb180f7a-6bcc-4986-84cc-d82773011113.png)<br>
